@@ -4,7 +4,7 @@ function createvars {
   $VARS=@'
   # Variables for all custom scripts
   # *********Edit this section***********
-  $ROLE = 'GAMESERVERP' #Determines Primary, GAMESERVERA, or Backup, GAMESERVERB configuration
+  $ROLE = 'GAMESERVERP' #Determines Primary, GAMESERVERP, or Backup, GAMESERVERB configuration
   $ScopId = '10.31.1.0' #Sets the DHCP scope and reverse DNS scope
   $RangeEnd = '10.31.1.250' #Sets the END of the DHCP scope range
   $RangeStart = '10.31.1.50' #Sets the START of the DHCP scope range
