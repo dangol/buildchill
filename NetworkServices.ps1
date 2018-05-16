@@ -106,11 +106,11 @@ write-host $ROLE
 $idns=installDNS
 $idhcp=installDHCP
 
-if ($ROLE = 'GAMESERVERA'){
+if ($ROLE -eq 'GAMESERVERA'){
   $dnsA=primaryDNS
   $dhcpA=primaryDHCP  
 }
-if ($ROLE = 'GAMESERVERB'){
+if ($ROLE -eq 'GAMESERVERB'){
   $dnsB=secondaryDNS
   $dhcpB=secondaryDHCP
 }
