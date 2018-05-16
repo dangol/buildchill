@@ -4,7 +4,7 @@ function createvars {
   $VARS=@'
   # Variables for all custom scripts
   # *********Edit this section***********
-  $ROLE = 'GAMESERVERA' #Determines Primary, GAMESERVERA, or Backup, GAMESERVERB configuration
+  $ROLE = 'GAMESERVERP' #Determines Primary, GAMESERVERA, or Backup, GAMESERVERB configuration
   $ScopId = '10.31.1.0' #Sets the DHCP scope and reverse DNS scope
   $RangeEnd = '10.31.1.250' #Sets the END of the DHCP scope range
   $RangeStart = '10.31.1.50' #Sets the START of the DHCP scope range
@@ -15,8 +15,8 @@ function createvars {
   $Router = '10.31.1.1' # default gateway
   $rzone = '1.31.10.in-addr.arpa' # reverse dns
   $DomainName = 'castlehillgaming.local' # domain name to use
-  $ScopeOptionValue = '"gameservera gameserverb"' # order of scope options
-  $PrimaryGame = "gameservera" # primary name
+  $ScopeOptionValue = '"gameserverp gameserverb"' # order of scope options
+  $PrimaryGame = "gameserverp" # primary name
   $SecondaryGame = "gameserverb" # backup name
   # **********End Editing here!************
 '@
@@ -106,12 +106,16 @@ write-host $ROLE
 $idns=installDNS
 $idhcp=installDHCP
 
-if ($ROLE -eq 'GAMESERVERA'){
+if ($ROLE -eq 'GAMESERVERP'){
+  write-host 'Running $ROLE'
   $dnsA=primaryDNS
-  $dhcpA=primaryDHCP  
+  $dhcpA=primaryDHCP
+  write-host 'Complete!'  
 }
 if ($ROLE -eq 'GAMESERVERB'){
+  write-host 'Running $ROLE'
   $dnsB=secondaryDNS
   $dhcpB=secondaryDHCP
+  write-host 'Complete!' 
 }
 # Script Body ends
