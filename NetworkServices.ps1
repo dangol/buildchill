@@ -47,10 +47,12 @@ function primaryDHCP {
   set-DhcpServerv4Optionvalue -ScopeId $ScopId -Router $Router
   set-DhcpServerv4Optionvalue -ScopeId $ScopId -DnsDomain $DomainName
   #Setup option 77 for game discovery
+  $ErrorActionPreference = "SilentlyContinue"
   $opt=get-DhcpServerv4OptionDefinition -Optionid 77 -VendorClass "Microsoft Options"
   if ($opt.multivalued -Match "True") {remove-DhcpServerv4OptionDefinition -OptionId 77 -VendorClass "Microsoft Options"}
   Add-DhcpServerv4OptionDefinition -Name "CHG-Game-Server" -VendorClass "Microsoft Options" -OptionId "77" -Type String -MultiValue
   Set-DhcpServerv4OptionValue -OptionId 77 -ScopeId $ScopId -VendorClass "Microsoft Options" -Value $ScopeOptionValue
+  $ErrorActionPreference = "Continue"
   # This completes setup of DHCP server, scope and options
 }
 
