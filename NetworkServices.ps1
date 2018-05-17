@@ -59,7 +59,7 @@ function primaryDHCP {
 function primaryDNS {
   # Create the primaryZone
   Add-DnsServerPrimaryZone -Name $DomainName -ZoneFile $DomainName
-  Set-DnsServerPrimaryZone -Name $DomainName -SecureSecondaries TransferToSecureServers -SecondaryServers $DNS2
+  Set-DnsServerPrimaryZone -Name $DomainName –Notify Notifyservers –notifyservers $DNS2 -SecureSecondaries TransferToSecureServers -SecondaryServers $DNS2
 
   # Create the reverse Zone
   Add-DnsServerPrimaryZone -NetworkID $ScopID/24 -ZoneFile $ScopID
@@ -120,4 +120,6 @@ if ($ROLE -eq 'GAMESERVERB'){
   $dhcpB=secondaryDHCP
   write-host 'Complete!' 
 }
+# Reset the execution Policy
+Set-ExecutionPolicy Restricted
 # Script Body ends
