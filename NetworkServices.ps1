@@ -103,10 +103,10 @@ If (Test-Path vars.ps1){
 # Script Body starts
 $EP=Get-ExecutionPolicy
 if ($EP -match 'RemoteSigned' -Or $EP -match 'Restricted') {
-  Write-Host "Remote Signed or Restricted Mode, setting to unrestricted" -ForegroundColor Green
+  Write-Host "Remote Signed or Restricted Mode, setting to unrestricted"
   Set-ExecutionPolicy Unrestricted -scope Process -Force 
 }
-write-host "This server is being configured with the rollowing role: $ROLE" -ForegroundColor Purple
+write-host "This server is being configured with the rollowing role: $ROLE"
 # Set domain search for instance
 (Get-WmiObject -Class win32_networkadapterconfiguration |  ?{$_.IPAddress -like $DNS1 -or $_.IPAddress -like $DNS2}).SetDNSDomain($DomainName)
 # Call installation functions
