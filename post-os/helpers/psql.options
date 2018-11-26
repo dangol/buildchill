@@ -1,0 +1,6 @@
+mode=unattended
+serverport=7336
+superaccount=postgres
+superpassword=chg_1807
+unattendedmodeui=minimal
+install_runtimes=yes
